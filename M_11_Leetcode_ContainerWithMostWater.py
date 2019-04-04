@@ -23,16 +23,22 @@ This means that we can discard min(a1, aN) from our set and look to solve this p
 4) Else, it reduces to solving the same thing for a1, aN-1
 """
 
-class Solution:
-    def maxArea(self, array: List[int]) -> int:
-        l = 0
-        r = len(array) -1
-        area = []
-        while l < r:
-            area.append(min(array[l], array[r]) * (r - l))
-            if array[l] < array[r]:
-                l += 1
-            else:
-                r -= 1
-        #print(area)
-        return(max(area))
+def maxarea(array):
+    n = len(array)
+    l = 0
+    r = n - 1
+    area = []
+    while l < r:
+        area.append(min(array[l], array[r]) * (r - l))
+        if array[l] < array[r]:
+            l += 1
+        else:
+            r -= 1
+        print(area)
+    return(max(area))
+
+
+
+array = [int(x) for x in input().split()]
+result = maxarea(array)
+print(result)
