@@ -14,15 +14,38 @@ Example 3:
 Input: 10
 Output: false
 Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
+
 """
 
-class Solution:
-    def isPalindrome(self, x: int) -> bool:
-        if x < 0:
+#------------------------*** METHOD 1 (REVERSING THE NUMBER LOGIC) ***----------------------------------
+
+def isPalindrome(x):
+    if x < 0:
+        return False
+    rev_x = 0
+    temp = x
+    while temp>0:
+        rev_x = rev_x*10 +temp%10
+        temp = temp//10
+    return rev_x == x
+
+x = int(input())
+print(isPalindrome(x))
+
+#------------------------*** METHOD 2 (WITHOUT REVERSING THE NUMBER) ***----------------------------------
+
+def isPalindrome(x):
+    if x < 0:
+        return False
+    x = str(x)
+    i = 0
+    j = len(x) - 1
+    while i < j:
+        if x[i] != x[j]:
             return False
-        rev_x = 0
-        temp = x
-        while temp>0:
-            rev_x = rev_x*10 +temp%10
-            temp = temp//10
-        return rev_x == x
+        i += 1
+        j -= 1
+    return True
+
+x = int(input())
+print(isPalindrome(x))
